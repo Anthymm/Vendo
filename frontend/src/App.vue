@@ -3,6 +3,7 @@
     Hej
     <RouterLink to="/">Ettan</RouterLink>
     <RouterLink to="/create_ad">Tvååan</RouterLink>
+    <button @click="testBackend">Fetch</button>
   </nav>
   <section class="content-section" :style="{ minHeight: expanded, marginTop: topMargin }">
     <RouterView />
@@ -15,12 +16,15 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
+function testBackend() {
+  fetch(':5432/api/user')
+}
+
 //Move content-section up and down
 const expanded = ref('false')
 const topMargin = ref('10vh')
 
 watch(route, (oldVal, newVal) => {
-  console.log(oldVal)
   if (route.name) {
     if (route.name == 'create_ad') {
       expanded.value = '100vh'
