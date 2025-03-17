@@ -1,5 +1,37 @@
-<script setup lang="ts"></script>
+<template>
+  <nav>
+    Hej
+    <RouterLink to="/">Ettan</RouterLink>
+    <RouterLink to="/create_ad">Tvååan</RouterLink>
+  </nav>
+  <section class="content-section" :style="{ minHeight: expanded, marginTop: topMargin }">
+    <RouterView />
+  </section>
+</template>
 
-<template></template>
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+//Move content-section up and down
+const expanded = ref('false')
+const topMargin = ref('10vh')
+
+watch(route, (oldVal, newVal) => {
+  console.log(oldVal)
+  if (route.name) {
+    if (route.name == 'create_ad') {
+      expanded.value = '100vh'
+      topMargin.value = '0vh'
+    } else {
+      expanded.value = '50vh'
+      topMargin.value = '30vh'
+    }
+  }
+})
+//-----------------------------
+</script>
 
 <style scoped></style>
