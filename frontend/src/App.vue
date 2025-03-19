@@ -5,7 +5,7 @@
     </div>
     <div class="navChild-center">
       <input type="text" placeholder="Sök" />
-      <Icon />
+      <Icons icon="search" />
     </div>
     <div class="navChild-right"></div>
   </nav>
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import Icon from './icons/Icon.vue'
+import Icons from './components/Icons.vue'
 
 const route = useRoute()
 
