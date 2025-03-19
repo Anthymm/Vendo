@@ -1,40 +1,37 @@
 <template>
   <nav>
-    Hej
-    <RouterLink to="/">Ettan</RouterLink>
-    <RouterLink to="/create_ad">Tvååan</RouterLink>
-    <button @click="testBackend">Fetch</button>
+    <div class="navChild-left">
+      <button><h1>Vendo</h1></button>
+    </div>
+    <div class="navChild-center">
+      <input type="text" placeholder="Sök" />
+      <Icon />
+    </div>
+    <div class="navChild-right"></div>
   </nav>
-  <section class="content-section" :style="{ minHeight: expanded, marginTop: topMargin }">
+  <section
+    class="content-section"
+    :style="{ minHeight: expanded, marginTop: topMargin, paddingTop: topPadding }"
+  >
     <RouterView />
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, watch, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import Icon from './icons/Icon.vue'
 
 const route = useRoute()
 
-function testBackend() {
-  fetch(':5432/api/user')
-}
-
 //Move content-section up and down
-const expanded = ref('false')
-const topMargin = ref('10vh')
+const expanded = computed(() => (calcPath(10, '/create_ad') ? '100vh' : '50vh'))
+const topMargin = computed(() => (calcPath(10, '/create_ad') ? '0' : '30vh'))
+const topPadding = computed(() => (calcPath(10, '/create_ad') ? '15vh' : '0'))
 
-watch(route, (oldVal, newVal) => {
-  if (route.name) {
-    if (route.name == 'create_ad') {
-      expanded.value = '100vh'
-      topMargin.value = '0vh'
-    } else {
-      expanded.value = '50vh'
-      topMargin.value = '30vh'
-    }
-  }
-})
+function calcPath(endNum: number, slicedPath: string) {
+  return route.path.slice(0, endNum) == slicedPath
+}
 //-----------------------------
 </script>
 
