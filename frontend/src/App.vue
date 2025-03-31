@@ -15,12 +15,14 @@
   >
     <RouterView />
   </section>
+  <LoginModal />
 </template>
 
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import Icons from './components/Icons.vue'
+import LoginModal from './components/specific/LoginModal.vue'
+import Icons from './components/generic/Icons.vue'
 
 const route = useRoute()
 
@@ -34,5 +36,3 @@ function calcPath(endNum: number, slicedPath: string) {
 }
 //-----------------------------
 </script>
-
-<style scoped></style>

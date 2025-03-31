@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import PageSelector from '@/components/PageSelector.vue'
+import PageSelector from '../components/generic/PageSelector.vue'
 
 const pagesArray = [
   { name: 'Bilder', page: 'images' },

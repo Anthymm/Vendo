@@ -3,6 +3,7 @@ CREATE TABLE Users (
   userId UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   username TEXT,
   password TEXT,
+  email TEXT,
   createdAds
 );
 

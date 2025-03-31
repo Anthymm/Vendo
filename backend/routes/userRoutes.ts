@@ -6,7 +6,9 @@ const router = express.Router();
 router.get("/api/user", (req: Request, res: Response) =>
   userController.getUser(req, res)
 );
-router.post("/api/user");
+router.post("/api/user", (req: Request, res: Response) =>
+  userController.createUser(req, res)
+);
 router.patch("/api/user");
 router.delete("/api/user");
 
