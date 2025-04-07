@@ -10,3 +10,16 @@ export const useCounterStore = defineStore('counter', () => {
 
   return { count, doubleCount, increment }
 })
+
+export const useUserStore = defineStore('user', () => {
+  const loggedIn = ref(false)
+  const username = ref('pinia säger hej')
+  const userImage = ref('')
+  function setUsername(usernameInput: string) {
+    username.value = usernameInput
+  }
+  function setUserImage(userImageInput: string) {
+    userImage.value = userImageInput
+  }
+  return { loggedIn, username, userImage, setUsername, setUserImage }
+})

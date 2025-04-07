@@ -25,6 +25,10 @@ body {
   flex-wrap: wrap;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 //Navbar
 nav {
   position: absolute;

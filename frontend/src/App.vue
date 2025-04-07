@@ -7,7 +7,30 @@
       <input type="text" placeholder="Sök" />
       <Icons icon="search" />
     </div>
-    <div class="navChild-right"></div>
+    <div v-if="user.loggedIn" class="navChild-right">
+      {{ user.username }}
+      <ProfileButton />
+    </div>
+    <div v-else class="navChild-right">
+      <button
+        @click="
+          () => {
+            helper.openModal(LoginModal, null)
+          }
+        "
+      >
+        Logga In
+      </button>
+      <button
+        @click="
+          () => {
+            helper.openModal(LoginModal, null)
+          }
+        "
+      >
+        Registrera
+      </button>
+    </div>
   </nav>
   <section
     class="content-section"
@@ -15,15 +38,18 @@
   >
     <RouterView />
   </section>
-  <LoginModal />
 </template>
 
 <script setup lang="ts">
+import * as helper from './helper.ts'
+import { useUserStore } from './stores/counter'
 import { ref, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import LoginModal from './components/specific/LoginModal.vue'
 import Icons from './components/generic/Icons.vue'
+import ProfileButton from './components/specific/ProfileButton.vue'
 
+const user = useUserStore()
 const route = useRoute()
 
 //Move content-section up and down
