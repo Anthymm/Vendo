@@ -53,7 +53,6 @@ onMounted(() => {
 }
 
 .pageButton-container {
-  width: 40vw;
   height: 5vh;
 }
 </style>

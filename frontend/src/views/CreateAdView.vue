@@ -1,6 +1,6 @@
 <template>
   <section class="create_ad">
-    <PageSelector :pages="pagesArray" />
+    <PageSelector :pages="pagesArray" :style="{ width: '100%' }" />
     <RouterView />
   </section>
 </template>
@@ -21,5 +21,6 @@ const pagesArray = [
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 </style>
