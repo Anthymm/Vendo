@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 
 export const getUser = async (req: Request, res: Response) => {
   const { userIdentifier, password } = req.body;
-  let query = userIdentifier
+  let queryUser = userIdentifier
   let queryType
   if(userIdentifier && userIdentifier.includes("@")) {
     queryType = "email"
@@ -12,10 +12,10 @@ export const getUser = async (req: Request, res: Response) => {
   }
 
   try {
-    res.json(query + password);
+    res.json(queryUser + password);
     const result = await client.query(
       `SELECT * FROM users WHERE ${queryType} = $1 AND password = $2`,
-      [query, password]
+      [queryUser, password]
     );
     res.json({ callback: "success", user: result.rows[0] });
   } catch (err) {
