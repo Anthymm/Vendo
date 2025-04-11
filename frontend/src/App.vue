@@ -15,7 +15,7 @@
       <button
         @click="
           () => {
-            helper.openModal(LoginModal, null)
+            helper.openModal(Login_Register, {type: 'login'})
           }
         "
       >
@@ -24,7 +24,7 @@
       <button
         @click="
           () => {
-            helper.openModal(LoginModal, null)
+            helper.openModal(Login_Register, {type: 'register'})
           }
         "
       >
@@ -45,7 +45,7 @@ import * as helper from './helper.ts'
 import { useUserStore } from './stores/counter'
 import { ref, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import LoginModal from './components/specific/LoginModal.vue'
+import Login_Register from './login_register/Login_Register.vue'
 import Icons from './components/generic/Icons.vue'
 import ProfileButton from './components/specific/ProfileButton.vue'
 

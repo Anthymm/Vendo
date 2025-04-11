@@ -1,6 +1,6 @@
 <template>
   <section ref="modal" id="modal-backdrop" @click="(e: any) => checkTarget(e.target.id)">
-    <slot></slot>
+    <slot :data="data"></slot>
   </section>
 </template>
 
@@ -9,6 +9,10 @@ import { useTemplateRef } from 'vue'
 import * as helper from '../../helper'
 
 const modal = useTemplateRef('modal')
+
+const props = defineProps({
+  data: {}
+})
 
 function checkTarget(target: string) {
   if (helper.compareTarget('modal-backdrop', target) && modal.value) {

@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import '../../styles/profilebutton.scss'
+import '../../styles/components/profilebutton.scss'
 
 const props = defineProps({
   size: {

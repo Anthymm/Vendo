@@ -13,7 +13,7 @@ function createModalDom() {
   return modalDom
 }
 
-export function compareTarget(expectedTarget: string, target: string) {
+export function compareTarget(expectedTarget: String, target: String) {
   if (expectedTarget == target) {
     return true
   } else {
@@ -21,7 +21,7 @@ export function compareTarget(expectedTarget: string, target: string) {
   }
 }
 
-export function stringContains(inputString: string, comparator: string) {
+export function stringContains(inputString: String, comparator: string) {
   if (inputString && comparator) {
     return inputString.includes(comparator)
   } else {
@@ -59,8 +59,8 @@ export function fetchApi(
   return cb
 }
 
-export function openModal(modal: any, props: VNodeProps | null) {
-  currentVNode = createVNode(modal, props)
+export function openModal(modal: any, props: any) {
+  currentVNode = createVNode(modal, {data: props})
   render(currentVNode, createModalDom())
 }
 
