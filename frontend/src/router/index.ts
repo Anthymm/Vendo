@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import SearchView from '@/views/SearchView.vue'
 import AdView from '../views/CreateAdView.vue'
 import ImagesPage from '../pages/CreatedAdPages/ImagesPage.vue'
 import InformationPage from '../pages/CreatedAdPages/InformationPage.vue'
@@ -13,6 +14,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: SearchView,
     },
     {
       path: '/create_ad',

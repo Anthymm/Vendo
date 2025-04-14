@@ -4,8 +4,7 @@
       <button><h1>Vendo</h1></button>
     </div>
     <div class="navChild-center">
-      <input type="text" placeholder="Sök" />
-      <Icons icon="search" />
+      <Search />
     </div>
     <div v-if="user.loggedIn" class="navChild-right">
       {{ user.username }}
@@ -15,7 +14,7 @@
       <button
         @click="
           () => {
-            helper.openModal(Login_Register, {type: 'login'})
+            helper.openModal(Login_Register, { type: 'login' })
           }
         "
       >
@@ -24,7 +23,7 @@
       <button
         @click="
           () => {
-            helper.openModal(Login_Register, {type: 'register'})
+            helper.openModal(Login_Register, { type: 'register' })
           }
         "
       >
@@ -46,7 +45,7 @@ import { useUserStore } from './stores/counter'
 import { ref, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Login_Register from './login_register/Login_Register.vue'
-import Icons from './components/generic/Icons.vue'
+import Search from './components/specific/Search.vue'
 import ProfileButton from './components/specific/ProfileButton.vue'
 
 const user = useUserStore()
