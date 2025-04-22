@@ -12,6 +12,7 @@
     </div>
     <div v-else class="navChild-right">
       <button
+        class="v-button"
         @click="
           () => {
             helper.openModal(Login_Register, { type: 'login' })
@@ -21,6 +22,7 @@
         Logga In
       </button>
       <button
+        class="v-button"
         @click="
           () => {
             helper.openModal(Login_Register, { type: 'register' })
@@ -41,12 +43,13 @@
 
 <script setup lang="ts">
 import * as helper from './helper.ts'
-import { useUserStore } from './stores/counter'
-import { ref, watch, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useUserStore } from './stores/user'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import Login_Register from './login_register/Login_Register.vue'
 import Search from './components/specific/Search.vue'
 import ProfileButton from './components/specific/ProfileButton.vue'
+import './styles/global/button.scss'
 
 const user = useUserStore()
 const route = useRoute()

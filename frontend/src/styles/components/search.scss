@@ -1,13 +1,23 @@
-.search {
+.v-search {
+  position: relative;
+  border-bottom: 2px solid black;
+
   &-input {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid black;
-    width: 50%;
+    width: 87%;
     font-size: 32px;
 
     &:focus {
       outline: none;
     }
+  }
+
+  &-button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 4px;
+    top: 20%;
   }
 }

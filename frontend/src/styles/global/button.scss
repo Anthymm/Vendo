@@ -1,0 +1,12 @@
+.v-button {
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+	padding: 4px 8px 4px 8px;
+	border-radius: 16px;
+	font-size: 16px;
+
+	&:hover {
+		@extend .v-button;
+		box-shadow: none;
+	}
+}

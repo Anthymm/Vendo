@@ -1,11 +1,11 @@
 <template>
-	<button class="item-wrapper">
-		<div class="item-image" :style="{backgroundImage: `url(${imageURL})`}"></div>
-		<div class="item-header">
-			<div class="item-header-name">El Flöjt</div>
-			<div class="item-header-price">7000kr</div>
+	<button class="v-item">
+		<div class="v-item-image" :style="{backgroundImage: `url(${imageURL})`}"></div>
+		<div class="v-item-header">
+			<div class="v-item-header-name">El Flöjt</div>
+			<div class="v-item-header-price">7000kr</div>
 		</div>
-		<div class="item-description"></div>
+		<div class="v-item-description"></div>
 	</button>
 </template>
 

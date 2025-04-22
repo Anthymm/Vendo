@@ -73,6 +73,7 @@ nav {
 
   &-right {
     @extend .navChild;
+    gap: 16px;
   }
 }
 //
