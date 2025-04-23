@@ -1,0 +1,43 @@
+services:
+  database:
+    build:
+      context: .
+      target: database
+    environment:
+      - POSTGRES_PASSWORD=ENV
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: ["CMD", "pg_isready", "--username=postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - vendo_db:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d/
+
+  backend:
+    build:
+      context: .
+      target: backend
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - PGURI=postgres://postgres:vendo@database/postgres
+    ports:
+      - 5432:5432
+
+  web:
+    build:
+      context: .
+      target: nginx
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_PORT=80
+
+volumes:
+  vendo_db:
