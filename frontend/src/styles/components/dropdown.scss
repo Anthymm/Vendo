@@ -1,0 +1,28 @@
+.v{
+	&-dropdown {
+		margin-top: 110%;
+		margin-left: -50%;
+		&-list {
+			list-style: none;
+			border: 2px solid black;
+			box-shadow: 4px 5px 1px;
+			border-radius: 16px;
+			overflow: hidden;
+			width: 200%;
+
+			&-button {
+				width: 100%;
+				height: auto;
+				border: none;
+				font-size: 24px;
+			
+				&:hover {
+					@extend .v-dropdown-list-button;
+					background-color: gray;
+				}
+			}
+		}
+	}
+
+	
+}

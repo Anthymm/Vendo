@@ -1,5 +1,6 @@
 describe('search', () => {
   it('search with enter', () => {
+    cy.visit('localhost:5173')
     cy.get('input').type('Test Object{enter}')
   })
   it('search without enter', () => {

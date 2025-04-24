@@ -1,6 +1,8 @@
-.profileButton {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+.v{
+  &-profilebutton {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }

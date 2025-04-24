@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTemplateRef } from 'vue'
+import { onUnmounted, useTemplateRef } from 'vue'
 import * as helper from '../../helper'
 
 const modal = useTemplateRef('modal')
@@ -19,6 +19,10 @@ function checkTarget(target: string) {
     helper.closeModal()
   }
 }
+
+onUnmounted(() => {
+  helper.closeModal()
+})
 </script>
 
 <style scoped>
