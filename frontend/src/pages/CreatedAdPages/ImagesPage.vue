@@ -5,21 +5,12 @@
       v-for="(i, index) in 6"
       :key="'gridItem' + index"
       class="imageGrid-item"
-      @change="checkFile"
+      @change="(e) => {e.target.style.backgroundImage = `url(${helper.getFile(e)})`}"
     />
   </section>
 </template>
 
 <script setup>
 import '../../styles/pages/imagepage.scss'
-
-const checkFile = (event) => {
-  const file = event.target.files[0]
-  const el = event.target
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => {
-    el.style.backgroundImage = `url(${reader.result})`
-  }
-}
+import * as helper from '../../helper'
 </script>

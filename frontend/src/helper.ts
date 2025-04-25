@@ -68,3 +68,12 @@ export function closeModal() {
   const modalDom = document.querySelector('#modalDom')
   modalDom?.remove()
 }
+
+export function checkFile(event: any) {
+  const file = event.target.files[0]
+  const reader = new FileReader()
+  reader.readAsDataURL(file)
+  reader.onload = () => {
+    return reader.result
+  }
+}
