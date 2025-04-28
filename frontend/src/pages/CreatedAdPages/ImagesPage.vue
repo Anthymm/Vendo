@@ -5,7 +5,11 @@
       v-for="(i, index) in 6"
       :key="'gridItem' + index"
       class="imageGrid-item"
-      @change="(e) => {e.target.style.backgroundImage = `url(${helper.getFile(e)})`}"
+      @change="
+        (e) => {
+          helper.readFile(e)
+        }
+      "
     />
   </section>
 </template>

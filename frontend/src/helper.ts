@@ -60,7 +60,7 @@ export function fetchApi(
 }
 
 export function openModal(modal: any, props: any) {
-  currentVNode = createVNode(modal, {data: props})
+  currentVNode = createVNode(modal, { data: props })
   render(currentVNode, createModalDom())
 }
 
@@ -69,11 +69,12 @@ export function closeModal() {
   modalDom?.remove()
 }
 
-export function checkFile(event: any) {
-  const file = event.target.files[0]
+export function readFile(event: any) {
+  const el = event.target
+  const file = el.files[0]
   const reader = new FileReader()
   reader.readAsDataURL(file)
   reader.onload = () => {
-    return reader.result
+    el.style.backgroundImage = `url(${reader.result})`
   }
 }
