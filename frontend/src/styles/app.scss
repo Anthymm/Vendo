@@ -15,6 +15,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   background-color: vars.$background-color;
+  overflow-x: hidden;
 }
 
 #app {
@@ -23,6 +24,13 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+  padding: none;
+  margin: none;
 }
 
 button:hover {
@@ -45,7 +53,6 @@ nav {
 
 .navChild {
   width: 33%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +63,7 @@ nav {
     padding: 32px;
     box-sizing: border-box;
 
-    & > button {
+    & > a {
       border: none;
       background-color: vars.$white;
       font-size: 1.5vw;
@@ -75,6 +82,7 @@ nav {
     @extend .navChild;
     gap: 16px;
     font-size: 24px;
+    text-align: center;
   }
 }
 //

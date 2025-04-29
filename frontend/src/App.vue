@@ -1,13 +1,14 @@
 <template>
   <nav>
     <div class="navChild-left">
-      <button><h1>Vendo</h1></button>
+      <RouterLink to="/">Vendo</RouterLink>
     </div>
     <div class="navChild-center">
       <Search />
     </div>
     <div v-if="user.loggedIn" class="navChild-right">
-      {{ user.username }}
+      <RouterLink to="/create_ad"><Icons icon="add" /></RouterLink>
+      <div>{{ user.username }}</div>
       <ProfileButton />
     </div>
     <div v-else class="navChild-right">
@@ -45,7 +46,8 @@
 import * as helper from './helper.ts'
 import { useUserStore } from './stores/user'
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter, RouterLink } from 'vue-router'
+import Icons from './components/generic/Icons.vue'
 import Login_Register from './login_register/Login_Register.vue'
 import Search from './components/specific/Search.vue'
 import ProfileButton from './components/specific/ProfileButton.vue'
@@ -53,6 +55,7 @@ import './styles/global/button.scss'
 
 const user = useUserStore()
 const route = useRoute()
+const router = useRouter()
 
 //Move content-section up and down
 const expanded = computed(() => (calcPath(10, '/create_ad') ? '100vh' : '50vh'))
