@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="navChild-left">
+    <div class="navChild-left v-text-large">
       <RouterLink to="/">Vendo</RouterLink>
     </div>
     <div class="navChild-center">
@@ -13,7 +13,7 @@
     </div>
     <div v-else class="navChild-right">
       <button
-        class="v-button"
+        class="v-button v-text-medium"
         @click="
           () => {
             helper.openModal(Login_Register, { type: 'login' })
@@ -23,7 +23,7 @@
         Logga In
       </button>
       <button
-        class="v-button"
+        class="v-button v-text-medium"
         @click="
           () => {
             helper.openModal(Login_Register, { type: 'register' })
@@ -52,6 +52,7 @@ import Login_Register from './login_register/Login_Register.vue'
 import Search from './components/specific/Search.vue'
 import ProfileButton from './components/specific/ProfileButton.vue'
 import './styles/global/button.scss'
+import './styles/global/text.scss'
 
 const user = useUserStore()
 const route = useRoute()

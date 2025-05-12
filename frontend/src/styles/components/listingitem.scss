@@ -19,7 +19,7 @@
         background-repeat: no-repeat;
       }
 
-      &-header {
+      &-info {
         display: flex;
         height: 100%;
         width: 30%;
@@ -30,6 +30,9 @@
 
         &-price {
           font-size: 18px;
+        }
+
+        &-misc {
         }
 
         & > p {
