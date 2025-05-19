@@ -1,0 +1,10 @@
+.imageGrid {
+  width: 20vw;
+  height: 50vh;
+
+  &-item {
+    width: 10vw;
+    height: 10vw;
+    background-size: contain;
+  }
+}
