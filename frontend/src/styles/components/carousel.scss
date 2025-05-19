@@ -7,10 +7,10 @@
     gap: 128px;
     width: 256px;
     height: 50;
-    padding-left: 50%;
-    padding-right: 50%;
+    padding-left: 50vw;
+    padding-right: 50vw;
 
-    & > * {
+    &>* {
       max-width: min(256px, 10vw);
       max-height: min(256px, 10vw);
     }
