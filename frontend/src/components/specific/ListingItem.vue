@@ -1,22 +1,15 @@
 <template>
-  <button
-    :class="'v-' + expanded + '-item'"
-    ref="listing"
-    @click="
-      (e) => {
-        checkTarget(e.target)
-      }
-    "
-  >
-    <div
-      v-if="expanded == 'nex'"
-      :class="'v-' + expanded + '-item-image'"
-      :style="{ backgroundImage: `url(${images[0]})` }"
-    ></div>
+  <button :class="'v-' + expanded + '-item'" ref="listing" @click="
+    (e) => {
+      checkTarget(e.target)
+    }
+  ">
+    <div v-if="expanded == 'nex'" :class="'v-' + expanded + '-item-image'"
+      :style="{ backgroundImage: `url(${images[0]})` }"></div>
     <Carousel v-else ref="carousel">
       <img v-for="(image, index) in props.images" :src="image" alt="" :key="index" />
     </Carousel>
-    <div class="v-ex-content-wrapper"> 
+    <div class="v-ex-content-wrapper">
       <div :class="'v-' + expanded + '-item-info'">
         <div :class="'v-' + expanded + '-item-info-name'">El Flöjt</div>
         <div :class="'v-' + expanded + '-item-info-price'">7000kr</div>
