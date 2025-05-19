@@ -1,5 +1,6 @@
 <template>
-  <ListingItem v-for="(i, index) in 20" :key="index" :images="['/images/missingImage.jpg']" />
+  <ListingItem v-for="(i, index) in 20" :key="index"
+    :images="['/images/missingImage.jpg', '/images/missingImage.jpg']" />
 </template>
 
 <script setup lang="ts">
