@@ -10,8 +10,7 @@ export const getListings = async (req: Request, res: Response) => {
 
 export const publishListing = async (req: Request, res: Response) => {
   try {
-    console.log(req.body);
-    res.json(200);
+    res.json({ cypress: "test" });
   } catch (err) {
     console.log(err);
   }

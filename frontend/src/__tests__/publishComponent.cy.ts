@@ -24,4 +24,8 @@ describe('Publish Button Component', () => {
 
     cy.contains('#modal').contains('Din annons har blivit publicerad').should('be.visible')
   })
+
+  /**
+   * need to add: if not all requirements for publishing are fullfilled that button is disabled
+   */
 })
