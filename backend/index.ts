@@ -15,6 +15,7 @@ import express from "express";
 import path from "path";
 
 import userRoutes from "./routes/userRoutes";
+import listingRoutes from "./routes/listingRoutes";
 
 const app = express(),
   port = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(path.resolve(), "dist")));
 
 app.use(userRoutes);
+app.use(listingRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
