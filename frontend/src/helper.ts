@@ -1,18 +1,3 @@
-import { h, createVNode, type Component, render, type VNode, type VNodeProps } from 'vue'
-
-const app: Element | null = document.getElementById('app')
-let currentVNode: VNode | null = null
-
-function createModalDom() {
-  const modalDom = document.createElement('div')
-  modalDom.setAttribute('id', 'modalDom')
-  modalDom.style.width = '100vw'
-  modalDom.style.height = '100vh'
-  modalDom.style.position = 'absolute'
-  app?.appendChild(modalDom)
-  return modalDom
-}
-
 export function compareTarget(expectedTarget: String, target: String) {
   if (expectedTarget == target) {
     return true
@@ -57,16 +42,6 @@ export function fetchApi(
       })
   }
   return cb
-}
-
-export function openModal(modal: any, props: any) {
-  currentVNode = createVNode(modal, { data: props })
-  render(currentVNode, createModalDom())
-}
-
-export function closeModal() {
-  const modalDom = document.querySelector('#modalDom')
-  modalDom?.remove()
 }
 
 export function readFile(event: any) {
