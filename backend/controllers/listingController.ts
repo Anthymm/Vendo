@@ -1,8 +1,17 @@
 import { client } from "../index";
-import { Request, Response } from 'express'
+import { Request, Response } from "express";
 
 export const getListings = async (req: Request, res: Response) => {
-	try {
-		const result = await client.query()
-	}
-}
+  try {
+    res.json(200);
+    // const result = await client.query()
+  } catch (err) {}
+};
+
+export const publishListing = async (req: Request, res: Response) => {
+  try {
+    res.json({ cypress: "test" });
+  } catch (err) {
+    console.log(err);
+  }
+};
