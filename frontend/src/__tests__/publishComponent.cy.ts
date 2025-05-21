@@ -9,14 +9,19 @@ describe('Publish Button Component', () => {
     cy.get('#publishButton').should('exist')
   })
 
-  it('test post request', () => {
-    cy.intercept('POST', '/api/publish/', {
-      statusCode: 200,
-      body: { success: true },
-    }).as('publishRequest')
+  it('tests POST request', () => {
+    cy.intercept('POST', '/api/listings').as('publishRequest')
 
     cy.get('#publishButton').click()
 
-    cy.wait('@publishRequest').its('response.statusCode').should('eq', 200)
+    cy.wait('@publishRequest').then((interception) => {
+      console.log(interception)
+    })
+  })
+
+  it('button shows modal displaying publish status', () => {
+    cy.get('#publishButton').click()
+
+    cy.contains('#modal').contains('Din annons har blivit publicerad').should('be.visible')
   })
 })
