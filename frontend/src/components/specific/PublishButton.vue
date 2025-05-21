@@ -1,5 +1,3 @@
 <template>
-	<button>
-		Publicera
-	</button>
+  <button id="publishButton">Publicera</button>
 </template>
