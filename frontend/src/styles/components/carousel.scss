@@ -1,5 +1,6 @@
 .v {
   &-carousel {
+    scrollbar-width: none;
     scroll-snap-type: x mandatory;
     display: flex;
     overflow-x: scroll;
@@ -11,6 +12,7 @@
     padding-left: 50%;
 
     &>* {
+      scroll-snap-align: center;
       max-width: min(256px, 10vw);
       max-height: min(256px, 10vw);
     }

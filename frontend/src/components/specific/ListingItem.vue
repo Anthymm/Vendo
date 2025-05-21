@@ -9,7 +9,7 @@
     <Carousel v-else ref="carousel">
       <img v-for="(image, index) in props.images" :src="image" alt="" :key="index" />
     </Carousel>
-    <div class="v-ex-content-wrapper">
+    <div :class="'v-' + expanded + '-content-wrapper'">
       <div :class="'v-' + expanded + '-item-info'">
         <div :class="'v-' + expanded + '-item-info-name'">El Flöjt</div>
         <div :class="'v-' + expanded + '-item-info-price'">7000kr</div>

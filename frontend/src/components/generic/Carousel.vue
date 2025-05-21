@@ -50,7 +50,7 @@ function toggleCarousel() {
 
 function scrollTo(dir, initial) {
   if (initial) {
-    carousel.value.children[1].scrollIntoView({
+    carousel.value.children[0].scrollIntoView({
       behavior: "instant",
       inline: "center",
       block: "center",
