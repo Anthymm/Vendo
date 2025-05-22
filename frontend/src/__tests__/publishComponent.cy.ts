@@ -1,4 +1,5 @@
 import PublishButton from '@/components/specific/PublishButton.vue'
+import { useListingStore } from '@/stores/listing'
 
 describe('Publish Button Component', () => {
   beforeEach(() => {
@@ -22,10 +23,10 @@ describe('Publish Button Component', () => {
   it('button shows modal displaying publish status', () => {
     cy.get('#publishButton').click()
 
-    cy.contains('#modal').contains('Din annons har blivit publicerad').should('be.visible')
+    cy.contains('Din annons har blivit publicerad').should('be.visible')
   })
 
-  /**
-   * need to add: if not all requirements for publishing are fullfilled that button is disabled
-   */
+  it('button is disabled if not enough fields are filled in previous segments', () => {
+    cy.get('#publishButton').should('be.disabled')
+  })
 })
