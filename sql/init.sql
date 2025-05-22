@@ -1,23 +1,22 @@
 -- create
-CREATE TABLE Users (
+CREATE TABLE users (
   userId UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   username TEXT,
   password TEXT,
-  email TEXT,
-  createdAds
+  email TEXT
 );
 
-CREATE TABLE createdAds (
-  adId SERIAL PRIMARY KEY DEFAULT,
-  userId UUID NOT NULL REFERENCES Users(userId) ON DELETE CASCADE,
+CREATE TABLE createdListings (
+  listingId SERIAL PRIMARY KEY,
+  userId UUID NOT NULL REFERENCES users(userId) ON DELETE CASCADE,
   title TEXT NOT NULL,
   description TEXT NOT NULL,
   price INT NOT NULL,
-  active BOOLEAN NOT NULL
+  active BOOLEAN NOT NULL,
   createdAt TIMESTAMP DEFAULT now()
 );
 
 -- insert
-INSERT INTO Users (username, password) VALUES ('Antons', 'Lösenord');
+INSERT INTO users (username, password) VALUES ('Admin', 'Admin');
 
-SELECT * FROM Users
+SELECT * FROM users
