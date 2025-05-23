@@ -5,7 +5,7 @@
     &-container {
       width: 15vw;
       height: 40vh;
-      background-color: #d9d9d9;
+      background-color: vars.$white;
       border-radius: 16px;
       box-shadow: vars.$varShadow;
       display: flex;
@@ -14,7 +14,6 @@
       flex-direction: column;
 
       & > div {
-        font-size: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
