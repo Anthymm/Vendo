@@ -1,9 +1,7 @@
-@use 'vars' as vars;
+@use '../vars' as vars;
 
 .user {
-
   &-login {
-
     &-container {
       width: 15vw;
       height: 40vh;
@@ -14,7 +12,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-  
+
       & > div {
         font-size: 24px;
         display: flex;
@@ -22,18 +20,15 @@
         align-items: center;
         height: 33%;
       }
-  
     }
-  
+
     &-inputs {
       display: flex;
       flex-direction: column;
     }
-
   }
 
   &-register {
-
     &-container {
       width: 15vw;
       height: 40vh;
@@ -44,23 +39,18 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-  
+
       & > div {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 33%;
       }
-  
     }
-  
+
     &-inputs {
       display: flex;
       flex-direction: column;
     }
-
   }
-
-  
-
 }

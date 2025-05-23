@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import * as helper from '../../helper'
-import '../../styles/loginregister.scss'
+import '../../styles/components/loginregister.scss'
 import { useUserStore } from '../../stores/user'
 
 const user = useUserStore()
@@ -23,13 +23,12 @@ const user = useUserStore()
 const userIdentifier = defineModel('userIdentifier')
 const userPassword = defineModel('userPassword')
 
-function loginUser() {
-  if (userIdentifier.value == 'Admin' && userPassword.value == 'Admin') {
-    user.setUsername('Anton')
-    return
-  }
-  let paramString = '?username=' + userIdentifier.value + '&password=' + userPassword.value
-  let cb = helper.fetchApi('user', 'FETCH', paramString, null)
-  console.log(cb)
+async function loginUser() {
+  let paramString = '?userIdentifier=' + userIdentifier.value + '&password=' + userPassword.value
+  helper.fetchApi('user', 'FETCH', paramString, null).then((cb) => {
+    if (cb.login == true) {
+      user.setUsername(cb.username)
+    }
+  })
 }
 </script>

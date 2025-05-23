@@ -8,7 +8,7 @@
     </div>
     <div v-if="user.loggedIn" class="navChild-right">
       <RouterLink to="/create_ad"><Icons icon="add" /></RouterLink>
-      <div>{{ user.username }}</div>
+      <div class="v-text-medium">{{ user.username }}</div>
       <ProfileButton />
     </div>
     <div v-else class="navChild-right">
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import * as helper from './helper.ts'
 import { useUserStore } from './stores/user'
-import { computed, ref, useTemplateRef } from 'vue'
+import { computed, ref, useTemplateRef, watch } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import Modal from './components/generic/Modal.vue'
 import Icons from './components/generic/Icons.vue'
@@ -44,6 +44,12 @@ const loginType = ref('')
 const user = useUserStore()
 const route = useRoute()
 const router = useRouter()
+
+watch(user, () => {
+  if (user.loggedIn) {
+    modal.value?.toggleModal()
+  }
+})
 
 function openLogin(type: string) {
   loginType.value = type

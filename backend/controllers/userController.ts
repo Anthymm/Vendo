@@ -2,25 +2,50 @@ import { client } from "../index";
 import { Request, Response } from "express";
 
 export const getUser = async (req: Request, res: Response) => {
-  const { userIdentifier, password } = req.body;
-  let queryUser = userIdentifier
-  let queryType
-  if(userIdentifier && userIdentifier.includes("@")) {
-    queryType = "email"
-  } else if(userIdentifier) {
-    queryType = "username"
+  const { userIdentifier, password } = req.query;
+  let queryUser = userIdentifier;
+  let queryType;
+  if (typeof userIdentifier === "string" && userIdentifier.includes("@")) {
+    queryType = "email";
+  } else if (typeof userIdentifier === "string") {
+    queryType = "username";
   }
 
   try {
-    res.json(queryUser + password);
     const result = await client.query(
       `SELECT * FROM users WHERE ${queryType} = $1 AND password = $2`,
       [queryUser, password]
     );
-    res.json({ callback: "success", user: result.rows[0] });
+    if (queryType == "email") {
+      if (
+        result.rows[0].email == userIdentifier &&
+        result.rows[0].password == password
+      ) {
+        res.json({
+          status: "success",
+          login: true,
+          username: result.rows[0].username,
+        });
+      } else {
+        res.json({ status: "success", login: false });
+      }
+    } else if (queryType == "username") {
+      if (
+        result.rows[0].username == userIdentifier &&
+        result.rows[0].password == password
+      ) {
+        res.json({
+          status: "success",
+          login: true,
+          username: result.rows[0].username,
+        });
+      } else {
+        res.json({ status: "success", login: false });
+      }
+    }
   } catch (err) {
     console.error("Error fetching user:", err);
-    res.json({ callback: "error", message: "Failed to fetch user" });
+    res.json({ status: "error", message: "Failed to fetch user" });
   }
 };
 
@@ -31,9 +56,9 @@ export const createUser = async (req: Request, res: Response) => {
       "INSERT INTO users (username, password, email) VALUES ($1, $2, $3)",
       [username, password, email]
     );
-    res.json({ callback: "Success" });
+    res.json({ status: "success" });
   } catch (err) {
     console.error("Error adding user:", err);
-    res.json({ callback: "error", message: "Failed to add user" });
+    res.json({ status: "error", message: "Failed to add user" });
   }
 };

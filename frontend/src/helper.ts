@@ -14,34 +14,26 @@ export function stringContains(inputString: String, comparator: string) {
   }
 }
 
-export function fetchApi(
+export async function fetchApi(
   api: string,
   method: string,
   urlParameters: string | null,
   postContent: object | null,
 ) {
   let cb
-  if (method != 'FETCH') {
-    fetch('/api/' + api, {
+  if (method !== 'FETCH') {
+    const response = await fetch('/api/' + api, {
       method: method,
       headers: {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(postContent),
     })
-      .then((resp) => resp.json())
-      .then((data) => {
-        cb = data
-      })
+    return await response.json()
   } else {
-    console.log(api + urlParameters)
-    fetch('/api/' + api + urlParameters)
-      .then((resp) => resp.json())
-      .then((data) => {
-        cb = data
-      })
+    const response = await fetch('/api/' + api + (urlParameters || ''))
+    return await response.json()
   }
-  return cb
 }
 
 export function readFile(event: any) {

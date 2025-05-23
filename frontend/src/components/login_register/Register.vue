@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import * as helper from '../../helper'
-import '../../styles/loginregister.scss'
+import '../../styles/components/loginregister.scss'
 
 const userPassword = defineModel('userPassword')
 const userEmail = defineModel('userEmail')
@@ -26,6 +26,5 @@ const userUsername = defineModel('userUsername')
 function registerUser() {
   let postContent = {}
   let cb = helper.fetchApi('user', 'POST', null, postContent)
-  console.log(cb)
 }
 </script>

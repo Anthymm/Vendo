@@ -9,22 +9,25 @@
     }"
     @click="dropdown.toggleActive"
   >
-  <Dropdown ref="dropdown" :width="size">
-    <ul class="v-dropdown-list">
-			<button class="v-dropdown-list-button">Profil</button>
-			<button class="v-dropdown-list-button">Logga Ut</button>
-		</ul>
-  </Dropdown>
+    <Dropdown ref="dropdown" :width="size">
+      <ul class="v-dropdown-list">
+        <button class="v-dropdown-list-button">Profil</button>
+        <button class="v-dropdown-list-button" @click="user.logOut">Logga Ut</button>
+      </ul>
+    </Dropdown>
   </button>
 </template>
 
 <script setup>
-import Dropdown from '../generic/Dropdown.vue';
+import Dropdown from '../generic/Dropdown.vue'
 import '../../styles/components/profilebutton.scss'
 import '../../styles/global/button.scss'
-import { useTemplateRef } from 'vue';
+import { useTemplateRef } from 'vue'
+import { useUserStore } from '@/stores/user'
 
-const dropdown = useTemplateRef("dropdown")
+const user = useUserStore()
+
+const dropdown = useTemplateRef('dropdown')
 
 const props = defineProps({
   size: {
