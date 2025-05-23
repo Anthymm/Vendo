@@ -25,6 +25,7 @@ export const getUser = async (req: Request, res: Response) => {
           status: "success",
           login: true,
           username: result.rows[0].username,
+          userId: result.rows[0].userid,
         });
       } else {
         res.json({ status: "success", login: false });
@@ -38,6 +39,7 @@ export const getUser = async (req: Request, res: Response) => {
           status: "success",
           login: true,
           username: result.rows[0].username,
+          userId: result.rows[0].userId,
         });
       } else {
         res.json({ status: "success", login: false });
@@ -56,7 +58,10 @@ export const createUser = async (req: Request, res: Response) => {
       "INSERT INTO users (username, password, email) VALUES ($1, $2, $3)",
       [username, password, email]
     );
-    res.json({ status: "success" });
+    res.json({
+      status: "success",
+      login: true,
+    });
   } catch (err) {
     console.error("Error adding user:", err);
     res.json({ status: "error", message: "Failed to add user" });

@@ -27,7 +27,7 @@ async function loginUser() {
   let paramString = '?userIdentifier=' + userIdentifier.value + '&password=' + userPassword.value
   helper.fetchApi('user', 'FETCH', paramString, null).then((cb) => {
     if (cb.login == true) {
-      user.setUsername(cb.username)
+      user.setUser(cb.userId, cb.username, null)
     }
   })
 }

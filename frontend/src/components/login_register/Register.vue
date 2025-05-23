@@ -18,13 +18,29 @@
 <script setup lang="ts">
 import * as helper from '../../helper'
 import '../../styles/components/loginregister.scss'
+import { useUserStore } from '@/stores/user'
+
+const user = useUserStore()
 
 const userPassword = defineModel('userPassword')
 const userEmail = defineModel('userEmail')
 const userUsername = defineModel('userUsername')
 
 function registerUser() {
-  let postContent = {}
-  let cb = helper.fetchApi('user', 'POST', null, postContent)
+  let postContent = {
+    username: userUsername.value,
+    password: userPassword.value,
+    email: userEmail.value,
+  }
+  helper.fetchApi('user', 'POST', null, postContent).then((cb1) => {
+    if (cb1.login) {
+      let paramString = '?userIdentifier=' + userUsername.value + '&password=' + userPassword.value
+      helper.fetchApi('user', 'FETCH', paramString, null).then((cb2) => {
+        if (cb2.login) {
+          user.setUser(cb2.userId, cb2.username, null)
+        }
+      })
+    }
+  })
 }
 </script>

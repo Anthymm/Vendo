@@ -1,4 +1,5 @@
--- create
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE TABLE users (
   userId UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   username TEXT,
@@ -16,7 +17,4 @@ CREATE TABLE createdListings (
   createdAt TIMESTAMP DEFAULT now()
 );
 
--- insert
 INSERT INTO users (username, password) VALUES ('Admin', 'Admin');
-
-SELECT * FROM users
