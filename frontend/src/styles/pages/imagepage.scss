@@ -1,10 +1,17 @@
-.imageGrid {
-  width: 20vw;
-  height: 50vh;
+.v {
+  &-images {
+    &-wrapper {
+      border: 1px solid black;
+    }
+    &-imageGrid {
+      width: 20vw;
+      height: 50vh;
 
-  &-item {
-    width: 10vw;
-    height: 10vw;
-    background-size: contain;
+      &-item {
+        width: 10vw;
+        height: 10vw;
+        background-size: contain;
+      }
+    }
   }
 }

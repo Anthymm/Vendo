@@ -2,10 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SearchView from '@/views/SearchView.vue'
 import AdView from '../views/CreateAdView.vue'
-import ImagesPage from '../pages/CreatedAdPages/ImagesPage.vue'
-import InformationPage from '../pages/CreatedAdPages/InformationPage.vue'
-import ReviewPage from '../pages/CreatedAdPages/ReviewPage.vue'
-import PublishPage from '../pages/CreatedAdPages/PublishPage.vue'
+import ImagesPage from '../pages/CreateAdPages/ImagesPage.vue'
+import InformationPage from '../pages/CreateAdPages/InformationPage.vue'
+import ReviewPage from '../pages/CreateAdPages/ReviewPage.vue'
+import PublishPage from '../pages/CreateAdPages/PublishPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

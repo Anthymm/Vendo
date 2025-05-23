@@ -1,21 +1,28 @@
 <template>
-  <button :class="'v-' + expanded + '-item'" ref="listing" @click="
-    (e) => {
-      checkTarget(e.target)
-    }
-  ">
-    <div v-if="expanded == 'nex'" :class="'v-' + expanded + '-item-image'"
-      :style="{ backgroundImage: `url(${images[0]})` }"></div>
+  <button
+    :class="'v-' + expanded + '-item'"
+    ref="listing"
+    @click="
+      (e) => {
+        checkTarget(e.target)
+      }
+    "
+  >
+    <div
+      v-if="expanded == 'nex'"
+      :class="'v-' + expanded + '-item-image'"
+      :style="{ backgroundImage: `url(${props.data.images[0]})` }"
+    ></div>
     <Carousel v-else ref="carousel">
-      <img v-for="(image, index) in props.images" :src="image" alt="" :key="index" />
+      <img v-for="(image, index) in props.data.images" :src="image" alt="" :key="index" />
     </Carousel>
     <div :class="'v-' + expanded + '-content-wrapper'">
       <div :class="'v-' + expanded + '-item-info'">
-        <div :class="'v-' + expanded + '-item-info-name'">El Flöjt</div>
-        <div :class="'v-' + expanded + '-item-info-price'">7000kr</div>
+        <div :class="'v-' + expanded + '-item-info-name'">{{ props.data.title }}</div>
+        <div :class="'v-' + expanded + '-item-info-price'">{{ props.data.price }}kr</div>
         <div :class="'v-' + expanded + '-item-info-misc'"></div>
       </div>
-      <div :class="'v-' + expanded + '-item-description'"></div>
+      <div :class="'v-' + expanded + '-item-description'">{{ props.data.description }}</div>
     </div>
   </button>
 </template>
@@ -27,12 +34,19 @@ import * as helper from '../../helper'
 import Carousel from '../generic/Carousel.vue'
 
 const listing = useTemplateRef('listing')
-const carousel = useTemplateRef('carousel')
+// const carousel = useTemplateRef('carousel')
 
 const expanded = ref('nex')
 
-const props = defineProps<{
+interface Data {
+  title: string
+  price: number
+  description: string
   images: string[]
+}
+
+const props = defineProps<{
+  data: Data
 }>()
 
 function checkTarget(e: any) {

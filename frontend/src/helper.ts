@@ -36,12 +36,21 @@ export async function fetchApi(
   }
 }
 
-export function readFile(event: any) {
+export function readFile(event: any): Promise<string | ArrayBuffer | null> {
   const el = event.target
   const file = el.files[0]
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => {
-    el.style.backgroundImage = `url(${reader.result})`
-  }
+
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+
+    reader.onload = () => {
+      resolve(reader.result)
+    }
+
+    reader.onerror = (error) => {
+      reject(error)
+    }
+
+    reader.readAsDataURL(file)
+  })
 }
